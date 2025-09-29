@@ -287,7 +287,7 @@ const Dashboard = () => {
           user_id: userProfile.id,
           payment_id: payment.id,
           description: payment.description,
-          amount: 50,
+          amount: 150,
           currency: payment.currency || 'CAD'
         }),
       });
