@@ -17,11 +17,29 @@ const Contact = () => {
     subject: "",
     message: ""
   });
+  const [isLoading, setIsLoading] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
+    setIsLoading(true);
+    setAlertMessage(""); // Clear any previous alert
+
+    // Simulate a 5-second delay for form submission
+    await new Promise((resolve) => setTimeout(resolve, 5000));
+
     console.log("Form submitted:", formData);
+    setAlertMessage("Votre message a été envoyé avec succès !");
+
+    // Reset form after submission
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      subject: "",
+      message: ""
+    });
+    setIsLoading(false);
   };
 
   const contactMethods = [
@@ -29,14 +47,14 @@ const Contact = () => {
       icon: Phone,
       title: "Téléphone",
       description: "Appelez-nous directement",
-      value: "+1 (555) 123-4567",
+      value: "+1 (581) 781-1945",
       available: "Lun-Ven 9h-18h (EST)"
     },
     {
       icon: MessageCircle,
       title: "WhatsApp",
       description: "Chat direct et rapide",
-      value: "+1 (555) 987-6543",
+      value: "+1 (581) 781-1945",
       available: "24h/7j"
     },
     {
@@ -50,7 +68,7 @@ const Contact = () => {
       icon: MapPin,
       title: "Bureau",
       description: "Rendez-vous sur demande",
-      value: "123 Rue Principale, Montreal",
+      value: "Montreal",
       available: "Sur rendez-vous"
     }
   ];
@@ -68,7 +86,6 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
       <main className="container mx-auto px-4 py-12">
         {/* Hero Section */}
         <div className="text-center mb-16">
@@ -76,7 +93,7 @@ const Contact = () => {
             Contactez-nous
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            Notre équipe d'experts est à votre disposition pour répondre à toutes vos questions 
+            Notre équipe d'experts est à votre disposition pour répondre à toutes vos questions
             sur votre projet d'immigration professionnelle au Canada.
           </p>
           <div className="flex justify-center gap-4">
@@ -89,7 +106,6 @@ const Contact = () => {
             </Badge>
           </div>
         </div>
-
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Form */}
           <Card>
@@ -123,7 +139,6 @@ const Contact = () => {
                     />
                   </div>
                 </div>
-
                 <div>
                   <label className="text-sm font-medium mb-2 block">Email *</label>
                   <Input
@@ -134,7 +149,6 @@ const Contact = () => {
                     onChange={(e) => setFormData({...formData, email: e.target.value})}
                   />
                 </div>
-
                 <div>
                   <label className="text-sm font-medium mb-2 block">Sujet *</label>
                   <Select value={formData.subject} onValueChange={(value) => setFormData({...formData, subject: value})}>
@@ -150,7 +164,6 @@ const Contact = () => {
                     </SelectContent>
                   </Select>
                 </div>
-
                 <div>
                   <label className="text-sm font-medium mb-2 block">Message *</label>
                   <Textarea
@@ -161,19 +174,53 @@ const Contact = () => {
                     onChange={(e) => setFormData({...formData, message: e.target.value})}
                   />
                 </div>
-
-                <Button 
-                  type="submit" 
-                  className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary-dark hover:to-secondary-dark"
-                  size="lg"
-                >
-                  <Send className="mr-2 h-4 w-4" />
-                  Envoyer le message
-                </Button>
+                <div>
+                  <Button
+                    type="submit"
+                    className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary-dark hover:to-secondary-dark"
+                    size="lg"
+                    disabled={isLoading}
+                  >
+                    {isLoading ? (
+                      <>
+                        <svg
+                          className="animate-spin mr-2 h-4 w-4 text-white"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                          ></circle>
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                          ></path>
+                        </svg>
+                        Envoi en cours...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="mr-2 h-4 w-4" />
+                        Envoyer le message
+                      </>
+                    )}
+                  </Button>
+                  {alertMessage && (
+                    <div className="mt-4 text-center text-green-600 font-medium">
+                      {alertMessage}
+                    </div>
+                  )}
+                </div>
               </form>
             </CardContent>
           </Card>
-
           {/* Contact Methods */}
           <div className="space-y-6">
             <Card>
@@ -199,7 +246,6 @@ const Contact = () => {
                 ))}
               </CardContent>
             </Card>
-
             {/* Business Hours */}
             <Card>
               <CardHeader>
@@ -230,7 +276,6 @@ const Contact = () => {
                 </div>
               </CardContent>
             </Card>
-
             {/* Quick Actions */}
             <Card className="bg-gradient-to-br from-primary/5 to-secondary/5 border-primary/20">
               <CardHeader>
@@ -253,7 +298,6 @@ const Contact = () => {
             </Card>
           </div>
         </div>
-
         {/* FAQ Link */}
         <div className="mt-16 text-center">
           <Card className="max-w-2xl mx-auto">
@@ -262,7 +306,7 @@ const Contact = () => {
                 Consultez d'abord notre FAQ
               </h3>
               <p className="text-muted-foreground mb-6">
-                Vous trouverez peut-être rapidement la réponse à votre question 
+                Vous trouverez peut-être rapidement la réponse à votre question
                 dans notre section questions fréquentes.
               </p>
               <Button variant="outline" size="lg">
@@ -272,7 +316,6 @@ const Contact = () => {
           </Card>
         </div>
       </main>
-
       <Footer />
     </div>
   );

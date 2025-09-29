@@ -7,10 +7,11 @@ const Hero = () => {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-background via-muted/30 to-background">
       {/* Éléments décoratifs */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-      <div className="absolute top-20 left-20 w-32 h-32 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full blur-xl"></div>
-      <div className="absolute bottom-20 right-20 w-40 h-40 bg-gradient-to-br from-secondary/20 to-primary/20 rounded-full blur-xl"></div>
-      
+      <div className="absolute inset-0 bg-grid-pattern opacity-5 pointer-events-none"></div>
+      <div className="absolute top-20 left-20 w-32 h-32 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full blur-xl pointer-events-none"></div>
+      <div className="absolute bottom-20 right-20 w-40 h-40 bg-gradient-to-br from-secondary/20 to-primary/20 rounded-full blur-xl pointer-events-none"></div>
+
+
       <div className="container mx-auto px-4 py-20 lg:py-32">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Contenu textuel */}
@@ -20,7 +21,7 @@ const Hero = () => {
                 <Shield className="mr-2 h-3 w-3" />
                 Recrutement sécurisé et certifié
               </Badge>
-              
+
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                 Votre{" "}
                 <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
@@ -28,9 +29,9 @@ const Hero = () => {
                 </span>{" "}
                 au Canada commence ici
               </h1>
-              
+
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Accompagnement complet et personnalisé pour votre recrutement international. 
+                Accompagnement complet et personnalisé pour votre recrutement international.
                 De l'inscription au départ, nous sécurisons chaque étape de votre projet.
               </p>
             </div>
@@ -53,28 +54,26 @@ const Hero = () => {
 
             {/* Boutons d'action */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-primary to-secondary hover:from-primary-dark hover:to-secondary-dark text-lg px-8"
-                asChild
+              {/* Bouton principal */}
+              <Link
+                to="/register"
+                className="w-full sm:w-auto bg-gradient-to-r from-primary to-secondary hover:from-primary-dark hover:to-secondary-dark text-white font-bold text-lg px-8 py-3 rounded-lg flex items-center justify-center transition-colors duration-300"
               >
-                <Link to="/register">
-                  Commencer l'inscription
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="text-lg px-8 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-                asChild
+                Commencer l'inscription
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+
+              {/* Bouton secondaire */}
+              <Link
+                to="/procedure"
+                className="w-full sm:w-auto border border-primary text-primary hover:bg-primary hover:text-white font-bold text-lg px-8 py-3 rounded-lg flex items-center justify-center transition-colors duration-300"
               >
-                <Link to="/procedure">
-                  Voir la procédure
-                </Link>
-              </Button>
+                Voir la procédure
+              </Link>
             </div>
+
+
+
 
             {/* Témoignage rapide */}
             <div className="flex items-center space-x-4 p-4 bg-card rounded-lg border border-border shadow-soft">
@@ -109,7 +108,7 @@ const Hero = () => {
                   <p className="text-primary-foreground/80">Votre destination</p>
                 </div>
               </div>
-              
+
               {/* Éléments flottants */}
               <div className="absolute -top-4 -right-4 bg-success text-success-foreground px-3 py-1 rounded-full text-sm font-medium shadow-medium">
                 ✓ Certifié
