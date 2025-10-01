@@ -206,14 +206,72 @@ const Register = () => {
     "Création du compte"
   ];
 
-  const countries = ["France", "Sénégal", "Côte d'Ivoire", "Cameroun", "Mali", "Burkina Faso", "Maroc", "Tunisie"];
-  const provinces = ["Ontario", "Québec", "Colombie-Britannique", "Alberta", "Manitoba", "Saskatchewan"];
+  const countries = [
+    "Afghanistan", "Afrique du Sud", "Albanie", "Algérie", "Allemagne",
+    "Andorre", "Angola", "Antigua-et-Barbuda", "Arabie saoudite", "Argentine",
+    "Arménie", "Australie", "Autriche", "Azerbaïdjan",
+    "Bahamas", "Bahreïn", "Bangladesh", "Barbade", "Belgique",
+    "Bénin", "Bhoutan", "Biélorussie", "Birmanie", "Bolivie",
+    "Bosnie-Herzégovine", "Botswana", "Brésil", "Brunei", "Bulgarie",
+    "Burkina Faso", "Burundi", "Cambodge", "Cameroun",
+    "Cap-Vert", "Chili", "Chine", "Chypre", "Colombie",
+    "Comores", "Congo", "République démocratique du Congo",
+    "Corée du Nord", "Corée du Sud", "Costa Rica", "Côte d'Ivoire", "Croatie",
+    "Cuba", "Danemark", "Djibouti", "Dominique", "Égypte",
+    "Émirats arabes unis", "Équateur", "Érythrée", "Espagne", "Estonie",
+    "Eswatini", "États-Unis", "Éthiopie", "Fidji", "Finlande", "France",
+    "Gabon", "Gambie", "Géorgie", "Ghana", "Grèce",
+    "Grenade", "Guatemala", "Guinée", "Guinée équatoriale",
+    "Guinée-Bissau", "Guyana", "Haïti", "Honduras", "Hongrie",
+    "Inde", "Indonésie", "Irak", "Iran", "Irlande",
+    "Islande", "Israël", "Italie", "Jamaïque", "Japon",
+    "Jordanie", "Kazakhstan", "Kenya", "Kirghizistan", "Kiribati",
+    "Kosovo", "Koweït", "Laos", "Lesotho", "Lettonie",
+    "Liban", "Liberia", "Libye", "Liechtenstein", "Lituanie",
+    "Luxembourg", "Macédoine du Nord", "Madagascar", "Malaisie", "Malawi",
+    "Maldives", "Mali", "Malte", "Maroc", "Maurice",
+    "Mauritanie", "Mexique", "Micronésie", "Moldavie", "Monaco",
+    "Mongolie", "Monténégro", "Mozambique", "Namibie", "Nauru",
+    "Népal", "Nicaragua", "Niger", "Nigeria", "Norvège",
+    "Nouvelle-Zélande", "Oman", "Ouganda", "Ouzbékistan", "Pakistan",
+    "Palaos", "Palestine", "Panama", "Papouasie-Nouvelle-Guinée",
+    "Paraguay", "Pays-Bas", "Pérou", "Philippines", "Pologne",
+    "Portugal", "Qatar", "République centrafricaine", "République tchèque",
+    "Roumanie", "Royaume-Uni", "Russie", "Rwanda", "Saint-Kitts-et-Nevis",
+    "Saint-Marin", "Saint-Vincent-et-les-Grenadines", "Sainte-Lucie",
+    "Salomon", "Salvador", "Samoa", "Sao Tomé-et-Principe", "Sénégal",
+    "Serbie", "Seychelles", "Sierra Leone", "Singapour", "Slovaquie",
+    "Slovénie", "Somalie", "Soudan", "Soudan du Sud", "Sri Lanka",
+    "Suède", "Suisse", "Suriname", "Syrie", "Tadjikistan",
+    "Tanzanie", "Tchad", "Thaïlande", "Timor oriental", "Togo",
+    "Tonga", "Trinité-et-Tobago", "Tunisie", "Turkménistan", "Turquie",
+    "Tuvalu", "Ukraine", "Uruguay", "Vanuatu", "Vatican",
+    "Venezuela", "Vietnam", "Yémen", "Zambie", "Zimbabwe"
+  ];
+  const provinces = [
+    // Provinces
+    "Alberta",
+    "Colombie-Britannique",
+    "Île-du-Prince-Édouard",
+    "Manitoba",
+    "Nouveau-Brunswick",
+    "Nouvelle-Écosse",
+    "Ontario",
+    "Québec",
+    "Saskatchewan",
+    "Terre-Neuve-et-Labrador",
+
+    // Territoires
+    "Territoires du Nord-Ouest",
+    "Nunavut",
+    "Yukon"
+  ];
   const educationLevels = ["Baccalauréat", "Licence/Bachelor", "Master", "Doctorat", "Formation professionnelle"];
 
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
+
       <main className="container mx-auto px-4 py-12">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-8">
@@ -245,14 +303,14 @@ const Register = () => {
                       <User className="h-5 w-5 text-primary" />
                       <h3 className="text-lg font-semibold">Informations personnelles</h3>
                     </div>
-                    
+
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label className="text-sm font-medium mb-2 block">Prénom *</label>
                         <Input
                           placeholder="Votre prénom"
                           value={formData.firstName}
-                          onChange={(e) => setFormData({...formData, firstName: e.target.value})}
+                          onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                           required
                           disabled={loading}
                         />
@@ -262,7 +320,7 @@ const Register = () => {
                         <Input
                           placeholder="Votre nom"
                           value={formData.lastName}
-                          onChange={(e) => setFormData({...formData, lastName: e.target.value})}
+                          onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                           required
                           disabled={loading}
                         />
@@ -278,7 +336,7 @@ const Register = () => {
                           placeholder="votre@email.com"
                           className="pl-10"
                           value={formData.email}
-                          onChange={(e) => setFormData({...formData, email: e.target.value})}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           required
                           disabled={loading}
                         />
@@ -294,7 +352,7 @@ const Register = () => {
                             placeholder="+XX XXX XXX XXX"
                             className="pl-10"
                             value={formData.phone}
-                            onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                             required
                             disabled={loading}
                           />
@@ -305,7 +363,7 @@ const Register = () => {
                         <Input
                           type="date"
                           value={formData.birthDate}
-                          onChange={(e) => setFormData({...formData, birthDate: e.target.value})}
+                          onChange={(e) => setFormData({ ...formData, birthDate: e.target.value })}
                           required
                           disabled={loading}
                         />
@@ -314,9 +372,9 @@ const Register = () => {
 
                     <div>
                       <label className="text-sm font-medium mb-2 block">Nationalité *</label>
-                      <Select 
-                        value={formData.nationality} 
-                        onValueChange={(value) => setFormData({...formData, nationality: value})}
+                      <Select
+                        value={formData.nationality}
+                        onValueChange={(value) => setFormData({ ...formData, nationality: value })}
                         disabled={loading}
                       >
                         <SelectTrigger>
@@ -344,9 +402,9 @@ const Register = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label className="text-sm font-medium mb-2 block">Pays actuel *</label>
-                        <Select 
-                          value={formData.currentCountry} 
-                          onValueChange={(value) => setFormData({...formData, currentCountry: value})}
+                        <Select
+                          value={formData.currentCountry}
+                          onValueChange={(value) => setFormData({ ...formData, currentCountry: value })}
                           disabled={loading}
                         >
                           <SelectTrigger>
@@ -366,7 +424,7 @@ const Register = () => {
                         <Input
                           placeholder="Votre ville"
                           value={formData.currentCity}
-                          onChange={(e) => setFormData({...formData, currentCity: e.target.value})}
+                          onChange={(e) => setFormData({ ...formData, currentCity: e.target.value })}
                           required
                           disabled={loading}
                         />
@@ -375,9 +433,9 @@ const Register = () => {
 
                     <div>
                       <label className="text-sm font-medium mb-2 block">Province préférée au Canada</label>
-                      <Select 
-                        value={formData.preferredProvince} 
-                        onValueChange={(value) => setFormData({...formData, preferredProvince: value})}
+                      <Select
+                        value={formData.preferredProvince}
+                        onValueChange={(value) => setFormData({ ...formData, preferredProvince: value })}
                         disabled={loading}
                       >
                         <SelectTrigger>
@@ -415,7 +473,7 @@ const Register = () => {
                       <Input
                         placeholder="Ex: Développeur web, Infirmier, Mécanicien..."
                         value={formData.currentJob}
-                        onChange={(e) => setFormData({...formData, currentJob: e.target.value})}
+                        onChange={(e) => setFormData({ ...formData, currentJob: e.target.value })}
                         required
                         disabled={loading}
                       />
@@ -423,9 +481,9 @@ const Register = () => {
 
                     <div>
                       <label className="text-sm font-medium mb-2 block">Années d'expérience *</label>
-                      <Select 
-                        value={formData.experience} 
-                        onValueChange={(value) => setFormData({...formData, experience: value})}
+                      <Select
+                        value={formData.experience}
+                        onValueChange={(value) => setFormData({ ...formData, experience: value })}
                         disabled={loading}
                       >
                         <SelectTrigger>
@@ -442,9 +500,9 @@ const Register = () => {
 
                     <div>
                       <label className="text-sm font-medium mb-2 block">Niveau d'éducation *</label>
-                      <Select 
-                        value={formData.education} 
-                        onValueChange={(value) => setFormData({...formData, education: value})}
+                      <Select
+                        value={formData.education}
+                        onValueChange={(value) => setFormData({ ...formData, education: value })}
                         disabled={loading}
                       >
                         <SelectTrigger>
@@ -465,7 +523,7 @@ const Register = () => {
                       <Input
                         placeholder="Ex: Français (natif), Anglais (intermédiaire)"
                         value={formData.languages}
-                        onChange={(e) => setFormData({...formData, languages: e.target.value})}
+                        onChange={(e) => setFormData({ ...formData, languages: e.target.value })}
                         required
                         disabled={loading}
                       />
@@ -488,7 +546,7 @@ const Register = () => {
                           placeholder="Minimum 8 caractères"
                           className="pr-10"
                           value={formData.password}
-                          onChange={(e) => setFormData({...formData, password: e.target.value})}
+                          onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                           required
                           disabled={loading}
                         />
@@ -509,7 +567,7 @@ const Register = () => {
                         type="password"
                         placeholder="Répétez votre mot de passe"
                         value={formData.confirmPassword}
-                        onChange={(e) => setFormData({...formData, confirmPassword: e.target.value})}
+                        onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
                         required
                         disabled={loading}
                       />
@@ -520,7 +578,7 @@ const Register = () => {
                         <Checkbox
                           id="terms"
                           checked={formData.acceptTerms}
-                          onCheckedChange={(checked) => setFormData({...formData, acceptTerms: checked as boolean})}
+                          onCheckedChange={(checked) => setFormData({ ...formData, acceptTerms: checked as boolean })}
                           required
                           disabled={loading}
                         />
@@ -540,7 +598,7 @@ const Register = () => {
                         <Checkbox
                           id="newsletter"
                           checked={formData.newsletter}
-                          onCheckedChange={(checked) => setFormData({...formData, newsletter: checked as boolean})}
+                          onCheckedChange={(checked) => setFormData({ ...formData, newsletter: checked as boolean })}
                           disabled={loading}
                         />
                         <label htmlFor="newsletter" className="text-sm">

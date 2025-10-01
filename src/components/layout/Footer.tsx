@@ -21,18 +21,10 @@ const Footer = () => {
               Nous vous accompagnons dans toutes les étapes de votre projet professionnel.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="https://www.facebook.com/profile.php?id=61581246617668" className="text-muted-foreground hover:text-primary transition-colors">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Instagram className="h-5 w-5" />
-              </a>
+              
             </div>
           </div>
 
@@ -86,15 +78,15 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Mail className="h-4 w-4 text-primary" />
-                <span className="text-muted-foreground text-sm">contact@canadarecruit.com</span>
+                <span className="text-muted-foreground text-sm">canadarecruit@alwaysdata.net</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="h-4 w-4 text-primary" />
-                <span className="text-muted-foreground text-sm">+1 (555) 123-4567</span>
+                <span className="text-muted-foreground text-sm">+1 (581) 781-1945</span>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="h-4 w-4 text-primary" />
-                <span className="text-muted-foreground text-sm">Toronto, Ontario, Canada</span>
+                <span className="text-muted-foreground text-sm">Québec, Montreal, Canada</span>
               </div>
             </div>
           </div>
@@ -105,10 +97,10 @@ const Footer = () => {
             © 2024 Canada Recruit. Tous droits réservés.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link to="/privacy" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+            <Link to="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
               Politique de confidentialité
             </Link>
-            <Link to="/terms" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+            <Link to="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
               Conditions d'utilisation
             </Link>
           </div>

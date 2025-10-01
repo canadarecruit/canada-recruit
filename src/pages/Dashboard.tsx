@@ -618,7 +618,7 @@ const Dashboard = () => {
       <div className="min-h-screen bg-background font-sans">
         <Header />
         <main className="container mx-auto px-4 py-8">
-          
+
           <div className="mb-8">
             <div className="flex items-center justify-between mb-4">
               <div>
@@ -677,7 +677,7 @@ const Dashboard = () => {
                             <div key={step.id} className="flex items-center gap-3">
                               <div className={`p-1 rounded-full ${step.status === 'completed' ? 'bg-green-500' :
                                 step.status === 'current' ? 'bg-primary' : 'bg-muted'
-                              }`}>
+                                }`}>
                                 {step.status === 'completed' ? (
                                   <CheckCircle className="h-4 w-4 text-white" />
                                 ) : step.status === 'current' ? (
@@ -726,7 +726,7 @@ const Dashboard = () => {
                               <div key={notification.id} className="flex items-start gap-3 p-3 rounded-lg border">
                                 <AlertCircle className={`h-4 w-4 mt-0.5 ${notification.type === 'success' ? 'text-green-500' :
                                   notification.type === 'warning' ? 'text-yellow-500' : 'text-blue-500'
-                                }`} />
+                                  }`} />
                                 <div className="flex-1">
                                   <p className="text-sm">{notification.message}</p>
                                   <p className="text-xs text-muted-foreground">{notification.date || 'N/A'}</p>
@@ -748,11 +748,18 @@ const Dashboard = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <Button className="h-30 flex-col gap-3">
+                    <Button
+                      className="h-32 flex flex-col gap-3"
+                      onClick={() => navigate("/contact")}
+                    >
                       <MessageSquare className="h-9 w-9" />
                       Contacter le support
                     </Button>
-                    <Button variant="outline" className="h-30 flex-col gap-3">
+                    <Button
+                      variant="outline"
+                      className="h-32 flex flex-col gap-3"
+                      onClick={() => navigate("/contact")}
+                    >
                       <Calendar className="h-9 w-9" />
                       Prendre rendez-vous
                     </Button>
@@ -797,8 +804,8 @@ const Dashboard = () => {
                                 doc.status === 'validated'
                                   ? 'bg-green-500 text-white'
                                   : doc.status === 'pending'
-                                  ? 'bg-blue-600 text-white'
-                                  : 'bg-red-500 text-white'
+                                    ? 'bg-blue-600 text-white'
+                                    : 'bg-red-500 text-white'
                               }
                             >
                               {doc.status === 'validated' ? 'Validé' : doc.status === 'pending' ? 'En attente' : 'Manquant'}
@@ -1014,7 +1021,9 @@ const Dashboard = () => {
                     <p className="text-muted-foreground mb-4">
                       Vous n'avez aucun message pour le moment.
                     </p>
-                    <Button>Nouveau message</Button>
+                    <Button onClick={() => alert("Faites activer votre compte par votre consultant")}>
+                      Nouveau message
+                    </Button>
                   </div>
                 </CardContent>
               </Card>

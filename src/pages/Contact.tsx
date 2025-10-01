@@ -42,6 +42,19 @@ const Contact = () => {
     setIsLoading(false);
   };
 
+  const isConnected = () => {
+    const token = localStorage.getItem("token") || sessionStorage.getItem("token");
+    return !!token;
+  };
+
+  const handleRestrictedAction = () => {
+    if (!isConnected()) {
+      alert("Veuillez vous connecter pour débloquer cette fonctionnalité. Cette fonctionnalité est réservée aux clients.");
+    } else {
+      alert("Veuillez contacter le service en leur adressant un mail sur canadarecruit@alwaysdata.net");
+    }
+  };
+
   const contactMethods = [
     {
       icon: Phone,
@@ -282,15 +295,17 @@ const Contact = () => {
                 <CardTitle>Actions rapides</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
-                <Button className="w-full justify-start" variant="outline">
-                  <MessageCircle className="mr-2 h-4 w-4" />
-                  Ouvrir WhatsApp
+                <Button asChild className="w-full justify-start" variant="outline">
+                  <a href="https://wa.me/15817811945" target="_blank" rel="noopener noreferrer">
+                    <MessageCircle className="mr-2 h-4 w-4" />
+                    Ouvrir WhatsApp
+                  </a>
                 </Button>
-                <Button className="w-full justify-start" variant="outline">
+                <Button className="w-full justify-start" variant="outline" onClick={handleRestrictedAction}>
                   <Phone className="mr-2 h-4 w-4" />
                   Programmer un appel
                 </Button>
-                <Button className="w-full justify-start" variant="outline">
+                <Button className="w-full justify-start" variant="outline" onClick={handleRestrictedAction}>
                   <Calendar className="mr-2 h-4 w-4" />
                   Prendre rendez-vous
                 </Button>
@@ -321,4 +336,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default Contact
