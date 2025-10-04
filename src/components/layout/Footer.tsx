@@ -21,9 +21,7 @@ const Footer = () => {
               Nous vous accompagnons dans toutes les étapes de votre projet professionnel.
             </p>
             <div className="flex space-x-4">
-              <a href="https://www.facebook.com/profile.php?id=61581246617668" className="text-muted-foreground hover:text-primary transition-colors">
-                <Facebook className="h-5 w-5" />
-              </a>
+              
               
             </div>
           </div>

@@ -166,7 +166,7 @@ const FAQ = () => {
                     Du lundi au vendredi, 9h-18h
                   </p>
                   <Button variant="outline" size="sm">
-                    +1 (555) 123-4567
+                    +1 (581) 781-1945
                   </Button>
                 </Card>
 
